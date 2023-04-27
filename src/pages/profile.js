@@ -4,6 +4,7 @@ import {getAuth} from "firebase/auth";
 import {app,database,auth} from "../config/firebase.js";
 import {ref,get,child} from "firebase/database";
 import { onAuthStateChanged } from 'firebase/auth';
+import SideBar from '../components/sideBar.js';
 
 
 const Profile = () => {
@@ -29,6 +30,9 @@ const Profile = () => {
         const username=snapshot.val().username
         const email=snapshot.val().email
         const mobile=snapshot.val().mobile_number
+        const twelth="Higher Secondary";
+        const college="Graduation";
+        const backlogsTitle="Backlogs"
         
 
         console.log(score)
@@ -54,37 +58,39 @@ const Profile = () => {
        }
 
        if(level=="12th"){
-        document.getElementById("12Title").innerHTML="Higher Secondary"
+
+        document.getElementById("12Title").innerHTML=twelth;
         document.getElementById("12").innerHTML=score;
        }
 
        if(level=="Bachelor"){
-        document.getElementById("bachTitle").innerHTML="Graduation";
+        document.getElementById("bachTitle").innerHTML=college;
         document.getElementById("bscore").innerHTML=score;
+        document.getElementById("backlogsTitle").innerHTML=backlogsTitle;
         document.getElementById("b_backlogs").innerHTML=backlogs;
        }
 
        if(level=="Master"){
-        document.getElementById("mastTitle").innerHTML="Graduation";
+        document.getElementById("mastTitle").innerHTML=college;
         document.getElementById("mscore").innerHTML=score;
+        document.getElementById("backlogsTitle").innerHTML=backlogsTitle;
         document.getElementById("m_backlogs").innerHTML=backlogs;
        }
     
     
     })
- 
-      // ...
     } else {
-      // User is signed out
-      // ...
     }
   });
  
   
   
   return (
-    <div className="container">
-      <br></br>
+    <div >
+      <div className='row'>
+
+        <div className='col' style={{paddingTop:0,paddingLeft:250,paddingRight:50,paddingBottom:0}}>
+        <br></br>
       <br></br>
     <div className="card shadow" style={{borderRadius:8}}>
       <div className="card-body">
@@ -191,7 +197,7 @@ const Profile = () => {
           </div>
           <hr></hr> 
           <div className='row'>
-              <div className='col-auto' id='aptitude' style={{fontWeight:20}}>
+              <div className='col-auto' id='aptitude' style={{fontWeight:40}}>
               </div>
               <div className='col-auto' id='aptitudeScores'>
 
@@ -215,7 +221,7 @@ const Profile = () => {
       </div>
 
     </div>
-
+    <br></br>
     <div className="card shadow" >
       <div className="card body" style={{padding:30,borderRadius:10}}>
         <div className="container">
@@ -231,20 +237,31 @@ const Profile = () => {
           </div>
 
           <div className='container'>
-              <div className='row' id='bachTitle' style={{fontWeight:20}}>
+            <div className='row'>
+            <div className='col' id='bachTitle' style={{fontWeight:20}}>
               </div>
-              <div className='row' id='bscore'>
+              <div className='col' id='bscore'>
 
               </div>
-              <div className='row' id='b_backlogs'>
+            </div>
+            <div className='row'>
+            <div className='col' id='backlogsTitle' style={{fontWeight:20}}>
 
-              </div>
+            </div>
+            <div className='col' id='b_backlogs'>
+
+            </div>
+            </div>
+
           </div>
 
           <div className='container'>
               <div className='row' id='mastTitle' style={{fontWeight:20}}>
               </div>
               <div className='row' id='mscore'>
+
+              </div>
+              <div className='row' id='backlogsTitle' style={{fontWeight:20}}>
 
               </div>
               <div className='row' id='m_backlogs'>
@@ -256,6 +273,12 @@ const Profile = () => {
       </div>
 
     </div>
+
+        </div>
+        <div className='col-auto' style={{position:'fixed',height:"80%"}} >
+          <SideBar/>
+        </div>
+      </div>
 
 
 

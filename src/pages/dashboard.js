@@ -1,10 +1,16 @@
-import React from 'react'
+import React from 'react';
+import SideBar from '../components/sideBar.js';
 
 const dashboard = () => {
   return (
     <div>
-      DashBoard
-      <a className='btn' href='\profile'>Profile</a>
+      <div className='row' style={{backgroundColor:'red'}}>
+        <div className='col-auto' style={{position:'fixed',height:"80%"}}>
+        <SideBar/>
+        </div>
+      </div>
+
+
     </div>
   )
 }

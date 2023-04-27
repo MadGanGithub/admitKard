@@ -1,9 +1,10 @@
 import React from 'react'
+import homeImage from "../assets/home.png";
 
 const home = () => {
   return (
-    <div>
-      Home
+    <div style={{backgroundColor:'white'}}>
+      <img src={homeImage} alt='home'/>
     </div>
   )
 }
